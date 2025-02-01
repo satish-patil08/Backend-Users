@@ -24,7 +24,8 @@ public class SecurityConfig {
                 .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .authorizeHttpRequests(auth ->
                         auth.requestMatchers(
-                                        "/users/login"
+                                        "/users/login",
+                                        "/users/register"
                                 ).permitAll() // Allow public access to auth endpoints
                                 .anyRequest().authenticated() // Secure all other endpoints
                 )
