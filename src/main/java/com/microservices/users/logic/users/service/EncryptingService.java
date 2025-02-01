@@ -1,4 +1,4 @@
-package com.microservices.users.logic.service;
+package com.microservices.users.logic.users.service;
 
 import org.springframework.security.crypto.bcrypt.BCrypt;
 import org.springframework.stereotype.Service;

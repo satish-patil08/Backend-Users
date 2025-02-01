@@ -1,8 +1,8 @@
-package com.microservices.users.logic.service;
+package com.microservices.users.logic.users.service;
 
 import com.microservices.shared_utils.statusResponces.StatusResponse;
-import com.microservices.users.logic.entity.Users;
-import com.microservices.users.logic.repository.UserRepository;
+import com.microservices.users.logic.users.entity.Users;
+import com.microservices.users.logic.users.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

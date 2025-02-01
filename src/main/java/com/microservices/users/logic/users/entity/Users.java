@@ -1,6 +1,7 @@
-package com.microservices.users.logic.entity;
+package com.microservices.users.logic.users.entity;
 
 import org.springframework.data.annotation.Id;
+import org.springframework.data.annotation.Transient;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.util.Date;
@@ -19,17 +20,22 @@ public class Users {
     public String password;
     public String contactNo;
 
+    @Transient
+    public String authToken;
+
+
     public Users() {
     }
 
-    public Users(String email, Date createDateTime, String firstName, String lastName, String fullName, String contactNo, String password) {
+    public Users(String email, Date createDateTime, String firstName, String lastName, String fullName, String password, String contactNo, String authToken) {
         this.email = email;
         this.createDateTime = createDateTime;
         this.firstName = firstName;
         this.lastName = lastName;
         this.fullName = fullName;
-        this.contactNo = contactNo;
         this.password = password;
+        this.contactNo = contactNo;
+        this.authToken = authToken;
     }
 
     public String getEmail() {
@@ -88,6 +94,14 @@ public class Users {
         this.password = password;
     }
 
+    public String getAuthToken() {
+        return authToken;
+    }
+
+    public void setAuthToken(String authToken) {
+        this.authToken = authToken;
+    }
+
     @Override
     public String toString() {
         return "Users{" +
@@ -96,8 +110,9 @@ public class Users {
                 ", firstName='" + firstName + '\'' +
                 ", lastName='" + lastName + '\'' +
                 ", fullName='" + fullName + '\'' +
-                ", contactNo='" + contactNo + '\'' +
                 ", password='" + password + '\'' +
+                ", contactNo='" + contactNo + '\'' +
+                ", authToken='" + authToken + '\'' +
                 '}';
     }
 }

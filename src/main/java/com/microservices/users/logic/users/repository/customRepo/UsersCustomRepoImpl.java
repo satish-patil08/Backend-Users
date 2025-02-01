@@ -1,4 +1,4 @@
-package com.microservices.users.logic.repository.customRepo;
+package com.microservices.users.logic.users.repository.customRepo;
 
 import org.springframework.stereotype.Repository;
 
