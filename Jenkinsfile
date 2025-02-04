@@ -8,11 +8,13 @@ pipeline {
     }
     stage('Delete the old containers') {
       steps {
-        sh '''sudo systemctl stop backend-users
-        sudo rm -rf /var/lib/jenkins/backend/service-registry/*
-        sudo cp -r target/*.jar /var/lib/jenkins/backend/backend-users/
-        sudo chown -R azureuser:azureuser /var/lib/jenkins/backend/backend-users/
-        sudo mv /var/lib/jenkins/backend/backend-users/*.jar /var/lib/jenkins/backend/backend-users/app.jar'''
+        sh '''
+        sudo systemctl stop backend-users
+        sudo rm -rf /var/lib/jenkins/backend/backend-users/app.jar
+        sudo cp target/backend-users-*.jar /var/lib/jenkins/backend/backend-users/app.jar
+        sudo chown azureuser:azureuser /var/lib/jenkins/backend/backend-users/app.jar
+        sudo chmod 755 /var/lib/jenkins/backend/backend-users/app.jar
+        '''
       }
     }
     stage('Run the updated dockers') {
