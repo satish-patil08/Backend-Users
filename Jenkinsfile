@@ -12,7 +12,7 @@ pipeline {
             steps {
                 sh '''
                 # Stop the existing service
-                sudo systemctl stop backend-notificationbackend-users || echo "Service already stopped or does not exist"
+                sudo systemctl stop backend-users || echo "Service already stopped or does not exist"
 
                 # Clean up the deployment directory
                 sudo rm -rf /var/lib/jenkins/backend/backend-users/*
