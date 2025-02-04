@@ -10,10 +10,10 @@ pipeline {
       steps {
         sh '''
         sudo systemctl stop backend-users
-                sudo rm -rf /var/lib/jenkins/backend/service-registry/*
-                sudo cp -r target/*.jar /var/lib/jenkins/backend/backend-users/
-                sudo chown -R azureuser:azureuser /var/lib/jenkins/backend/backend-users/
-                sudo mv /var/lib/jenkins/backend/backend-users/*.jar /var/lib/jenkins/backend/backend-users/app.jar
+        sudo rm -rf /var/lib/jenkins/backend/backend-users/*
+        sudo cp -r target/*.jar /var/lib/jenkins/backend/backend-users/
+        sudo chown -R azureuser:azureuser /var/lib/jenkins/backend/backend-users/
+        sudo mv /var/lib/jenkins/backend/backend-users/*.jar /var/lib/jenkins/backend/backend-users/app.jar
         '''
       }
     }
