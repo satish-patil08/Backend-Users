@@ -3,6 +3,8 @@ package com.microservices.users.logic.users.service;
 import com.microservices.shared_utils.jwtUtils.CustomUserDetails;
 import com.microservices.shared_utils.jwtUtils.JwtUtils;
 import com.microservices.shared_utils.statusResponces.StatusResponse;
+import com.microservices.users.logic.loginSession.controller.LoginSessionController;
+import com.microservices.users.logic.loginSession.entity.LoginSessions;
 import com.microservices.users.logic.users.entity.Users;
 import com.microservices.users.logic.users.repository.UserRepository;
 import com.microservices.users.modelRequest.LoginVerificationRequest;
@@ -28,6 +30,9 @@ public class UserLoginService {
     @Autowired
     private JwtUtils jwtUtils;
 
+    @Autowired
+    private LoginSessionController loginSessionController;
+
     public StatusResponse loginUser(LoginVerificationRequest loginVerificationRequest) {
         Optional<Users> users = userRepository.findById(loginVerificationRequest.getEmail());
         if (users.isEmpty()) {
@@ -42,16 +47,24 @@ public class UserLoginService {
             );
         }
         final UserDetails userDetails = customUserDetailsService.loadUserByUsername(loginVerificationRequest.getEmail());
+        Date expiration;
         final String jwt = jwtUtils.generateToken(
                 new CustomUserDetails(
                         userDetails.getUsername(),
                         userDetails.getPassword()
                 ),
-                new Date(new Date().getTime() + 1000 * 60 * 60 * 24)
+                expiration = new Date(new Date().getTime() + 1000 * 60 * 60 * 24)
         );
         users.get().setAuthToken(jwt);
         users.get().setPassword(null);
 
+        loginSessionController.saveLoginSession(new LoginSessions(
+                users.get().getEmail(),
+                new Date(),
+                users.get().getAuthToken(),
+                expiration,
+                true
+        ));
         return new StatusResponse(
                 true,
                 "Login Request Succeeded",

@@ -25,7 +25,8 @@ public class SecurityConfig {
                 .authorizeHttpRequests(auth ->
                         auth.requestMatchers(
                                         "/users/login",
-                                        "/users/register"
+                                        "/users/register",
+                                        "/users/login-sessions/*"
                                 ).permitAll() // Allow public access to auth endpoints
                                 .anyRequest().authenticated() // Secure all other endpoints
                 )
