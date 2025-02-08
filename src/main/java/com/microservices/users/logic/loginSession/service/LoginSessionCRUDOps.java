@@ -4,8 +4,8 @@ import com.microservices.shared_utils.statusResponces.StatusResponse;
 import com.microservices.users.commons.SequenceGeneratorService;
 import com.microservices.users.logic.loginSession.entity.LoginSessions;
 import com.microservices.users.logic.loginSession.repository.LoginSessionRepository;
-import com.microservices.users.modelResponse.LoginSessionListResponse;
-import com.microservices.users.modelResponse.LoginSessionsMongoResponse;
+import com.microservices.users.modelResponse.loginSession.LoginSessionListResponse;
+import com.microservices.users.modelResponse.loginSession.LoginSessionsMongoResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

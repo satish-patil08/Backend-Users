@@ -1,7 +1,7 @@
 package com.microservices.users.logic.loginSession.repository.customRepo;
 
 import com.microservices.users.logic.loginSession.entity.LoginSessions;
-import com.microservices.users.modelResponse.LoginSessionsMongoResponse;
+import com.microservices.users.modelResponse.loginSession.LoginSessionsMongoResponse;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.data.mongodb.core.query.Criteria;

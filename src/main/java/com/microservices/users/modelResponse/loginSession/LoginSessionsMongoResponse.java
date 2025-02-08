@@ -1,4 +1,4 @@
-package com.microservices.users.modelResponse;
+package com.microservices.users.modelResponse.loginSession;
 
 import com.microservices.users.logic.loginSession.entity.LoginSessions;
 

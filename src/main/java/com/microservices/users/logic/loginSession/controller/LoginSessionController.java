@@ -3,7 +3,7 @@ package com.microservices.users.logic.loginSession.controller;
 import com.microservices.shared_utils.statusResponces.StatusResponse;
 import com.microservices.users.logic.loginSession.entity.LoginSessions;
 import com.microservices.users.logic.loginSession.service.LoginSessionCRUDOps;
-import com.microservices.users.modelResponse.LoginSessionListResponse;
+import com.microservices.users.modelResponse.loginSession.LoginSessionListResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
