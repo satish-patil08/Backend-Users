@@ -27,9 +27,11 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
 
     @Override
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain) throws ServletException, IOException {
+        ResettableStreamHttpServletRequest wrappedRequest = new ResettableStreamHttpServletRequest(request);
+
         String path = request.getServletPath();
         if (path.equals("/users/login") || path.equals("/users/register")) {
-            filterChain.doFilter(request, response);
+            filterChain.doFilter(wrappedRequest, response);
             return;
         }
 
@@ -57,13 +59,6 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
                 return;
             }
         }
-        filterChain.doFilter(request, response);
+        filterChain.doFilter(wrappedRequest, response);
     }
-
-    /*@Override
-    protected boolean shouldNotFilter(HttpServletRequest request) {
-        String path = request.getServletPath();
-        return path.equals("/users/login") || path.equals("/users/register");
-    }*/
-
 }
